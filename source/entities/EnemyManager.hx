@@ -96,12 +96,11 @@ class EnemyManager extends FlxTypedGroup<Enemy>
 
 	function spawnEnemy(type:String):Void
 	{
-		trace("spawn");
-		var enemy = new entities.Enemy();
+		var enemy = new Enemy();
+		this.add(enemy);
 		enemy.onDeath.add(onEnemyDied);
 		enemy.setTarget(target);
 		enemy.setData(enemyTypes.get(type));
-		this.add(enemy);
 		activeEnemies.set(type, activeEnemies.get(type) + 1);
 
 		var pos = getSpawnPosition();
@@ -116,18 +115,18 @@ class EnemyManager extends FlxTypedGroup<Enemy>
 		{
 			case 0: // top
 				pos.x = FlxRandom.float() * GC.LEVEL_DIMS.x;
-				pos.y = -15;
+				pos.y = -30;
 
 			case 1: // bottom
 				pos.x = FlxRandom.float() * GC.LEVEL_DIMS.x;
-				pos.y = GC.LEVEL_DIMS.y + 15;
+				pos.y = GC.LEVEL_DIMS.y + 30;
 
 			case 2: // left
-				pos.x = -15;
+				pos.x = -30;
 				pos.y = FlxRandom.float() * GC.LEVEL_DIMS.y;
 
 			case 3: // right
-				pos.x = GC.LEVEL_DIMS.x + 15;
+				pos.x = GC.LEVEL_DIMS.x + 30;
 				pos.y = FlxRandom.float() * GC.LEVEL_DIMS.y;
 		}
 

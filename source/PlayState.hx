@@ -31,9 +31,9 @@ class PlayState extends FlxNapeState
 		super.create();
 		GC.init();
 		
-		this.createWalls(0, 0, GC.LEVEL_DIMS.x, GC.LEVEL_DIMS.y)
-			.setShapeFilters(GC.FILTER_BOUNDS)
-			.cbTypes.add(GC.CB_BOUNDS);
+		var walls = this.createWalls(0, 0, GC.LEVEL_DIMS.x, GC.LEVEL_DIMS.y);
+		walls.setShapeFilters(GC.FILTER_BOUNDS);
+		walls.cbTypes.add(GC.CB_BOUNDS);
 
 		bulletManager = Locator.registerBulletManager(new BulletManager());
 		enemyManager = Locator.registerEnemyManager(new EnemyManager());
@@ -54,8 +54,8 @@ class PlayState extends FlxNapeState
 		// FlxG.camera.setBounds(0, 0, GC.LEVEL_DIMS.x, GC.LEVEL_DIMS.y);
 		FlxG.camera.follow(player);
 
-		this.velocityIterations = 10;
-		this.positionIterations = 10;
+		this.velocityIterations = 5;
+		this.positionIterations = 5;
 
 		this.napeDebugEnabled = true;
 	}

@@ -40,8 +40,6 @@ class MenuState extends FlxState
 		super.update();
 	}	
 
-// Callbacks
-
 	function onPlayClicked():Void
 	{
 		FlxG.switchState(new PlayState());

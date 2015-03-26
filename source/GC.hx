@@ -30,13 +30,13 @@ class GC
 	public static var CB_SHOOTABLE(default, null):CbType = new CbType();
 	public static var CB_BOUNDS(default, null):CbType = new CbType();
 
-	public static inline var GROUP_PLAYER:Int = 1;
-	public static inline var GROUP_ENEMY:Int = 2;
-	public static inline var GROUP_BOUNDS:Int = 4;
+	public static inline var GROUP_PLAYER:Int = 1 << 0;
+	public static inline var GROUP_ENEMY:Int = 1 << 1;
+	public static inline var GROUP_BOUNDS:Int = 1 << 2;
 
 	public static var FILTER_PLAYER(default, null):InteractionFilter = new InteractionFilter(GROUP_PLAYER);
-	public static var FILTER_ENEMY(default, null):InteractionFilter = new InteractionFilter(GROUP_ENEMY, ~(GROUP_BOUNDS));
-	public static var FILTER_BOUNDS(default, null):InteractionFilter = new InteractionFilter(GROUP_BOUNDS, ~(GROUP_ENEMY));
+	public static var FILTER_ENEMY(default, null):InteractionFilter = new InteractionFilter(GROUP_ENEMY, ~GROUP_BOUNDS);
+	public static var FILTER_BOUNDS(default, null):InteractionFilter = new InteractionFilter(GROUP_BOUNDS, ~GROUP_ENEMY);
 
 	static var _init:Bool;
 	public static function init():Void
