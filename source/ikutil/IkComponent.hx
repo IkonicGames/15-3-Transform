@@ -1,4 +1,3 @@
-
 package ikutil;
 
 import ikutil.IkEntity;

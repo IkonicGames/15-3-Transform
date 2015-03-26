@@ -1,5 +1,6 @@
 package entities;
 
+import components.Biter;
 import components.EnemyMove;
 import data.EnemyData;
 import flixel.FlxG;
@@ -21,11 +22,11 @@ class Enemy extends IkEntity
 	var biteDamage:Int;
 	var bitePerSec:Float;
 
-	var biteTimer:FlxTimer;
-	var canBite:Bool;
+	// Components
+	var biter:Biter;
+	var enemyMove:EnemyMove;
 
 	var enemyManager:EnemyManager;
-	var enemyMove:EnemyMove;
 
 	function new()
 	{
@@ -33,12 +34,10 @@ class Enemy extends IkEntity
 
 		onDeath = new FlxTypedSignal<Enemy -> Void>();
 
-		biteTimer = new FlxTimer(0, onBiteRefresh);
-		canBite = true;
-
 		enemyManager = Locator.enemyManager;
 
 		enemyMove = cast this.addComponent(new EnemyMove());
+		biter = cast this.addComponent(new Biter());
 	}
 
 	override public function kill():Void
@@ -47,14 +46,15 @@ class Enemy extends IkEntity
 		onDeath.dispatch(this);
 	}
 
-	function onBiteRefresh(timer:FlxTimer):Void
-	{
-		canBite = true;
-	}
-
 	public function setTarget(target:FlxSprite):Void
 	{
 		enemyMove.setTarget(target);
+		biter.setTarget(target);
+	}
+
+	public function bite(target:FlxSprite):Void
+	{
+		biter.bite(target);
 	}
 
 	public function setData(data:EnemyData):Void
@@ -62,8 +62,8 @@ class Enemy extends IkEntity
 		type = data.type;
 		enemyMove.speed = data.speed;
 		health = data.health;
-		biteDamage = data.biteDamage;
-		bitePerSec = data.bitePerSec;
+		biter.biteDamage = data.biteDamage;
+		biter.bitesPerSec = data.bitePerSec;
 		if(radius != data.radius)
 		{
 			// TODO: think kthorugh this more...
@@ -82,15 +82,4 @@ class Enemy extends IkEntity
 			color = FlxColor.RED;
 		}
 	}
-
-	public function bite(target:FlxSprite):Void
-	{
-		if(target == this.target && canBite)
-		{
-			target.hurt(biteDamage);
-			biteTimer.reset(1 / bitePerSec);
-			canBite = false;
-		}
-	}
-
 }
