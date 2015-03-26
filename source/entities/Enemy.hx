@@ -1,17 +1,14 @@
 package entities;
 
-import data.EnemyData;
-import ikutil.IkEntity;
 import components.EnemyMove;
-import entities.EnemyManager;
-import flixel.util.FlxColor;
-import flixel.util.FlxRandom;
+import data.EnemyData;
 import flixel.FlxG;
 import flixel.FlxSprite;
-import flixel.util.FlxAngle;
+import flixel.util.FlxColor;
+import flixel.util.FlxRandom;
 import flixel.util.FlxSignal;
 import flixel.util.FlxTimer;
-import flixel.addons.nape.FlxNapeVelocity;
+import ikutil.IkEntity;
 
 class Enemy extends IkEntity
 {
@@ -72,6 +69,7 @@ class Enemy extends IkEntity
 			// TODO: think kthorugh this more...
 			radius = data.radius;
 			createCircularBody(radius);
+			physicsEnabled = true;
 			body.userData.data = this;
 			body.cbTypes.add(GC.CB_BITER);
 			body.cbTypes.add(GC.CB_SHOOTABLE);
