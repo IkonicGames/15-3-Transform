@@ -5,7 +5,7 @@ import ikutil.IkEntity;
 class IkComponent 
 {
 	public var owner(default, null):IkEntity;
-	public var enabled:Bool = true;
+	public var enabled(default, null):Bool;
 	
 	public function new() {}
 
@@ -13,6 +13,8 @@ class IkComponent
 	private function init(owner:IkEntity):Void
 	{
 		this.owner = owner;
+
+		setEnabled(true);
 	}
 
 	public function update():Void {}
@@ -21,4 +23,9 @@ class IkComponent
 	private function draw():Void {}
 
 	public function destroy():Void {}
+
+	public function setEnabled(enabled:Bool):Bool
+	{
+		return this.enabled = enabled;
+	}
 }
