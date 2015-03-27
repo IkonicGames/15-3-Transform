@@ -9,6 +9,8 @@ import flixel.util.FlxPoint;
 
 class Shooter extends IkComponent
 {
+	public var autoShoot:Bool;
+
 	var gun:Gun;
 
 	public function new()
@@ -28,8 +30,20 @@ class Shooter extends IkComponent
 		gun.setReleativePos(offX, offY);
 	}
 
+	override public function update():Void
+	{
+		if(autoShoot)
+			shoot();
+	}
+
 	public function setTarget(x:Float, y:Float):Void
 	{
 		gun.updateTarget(x, y);
+	}
+
+	public function shoot():Void
+	{
+		if(enabled)
+			gun.shoot();
 	}
 }
