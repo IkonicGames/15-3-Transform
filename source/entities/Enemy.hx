@@ -2,6 +2,7 @@ package entities;
 
 import components.Biter;
 import components.EnemyMove;
+import components.Shooter;
 import data.EnemyData;
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -22,9 +23,12 @@ class Enemy extends IkEntity
 	var biteDamage:Int;
 	var bitePerSec:Float;
 
+	var enemyData:EnemyData;
+
 	// Components
 	var biter:Biter;
 	var enemyMove:EnemyMove;
+	var shooter:Shooter;
 
 	var enemyManager:EnemyManager;
 
@@ -42,14 +46,27 @@ class Enemy extends IkEntity
 		biter.setEnabled(false);
 	}
 
+	override public function update():Void
+	{
+		super.update();
+
+		if(shooter != null && target != null)
+			shooter.setTarget(target.x, target.y);
+	}
+
 	override public function kill():Void
 	{
 		super.kill();
+
+		if(shooter != null)
+			shooter.setEnabled(false);
+
 		onDeath.dispatch(this);
 	}
 
 	public function setTarget(target:FlxSprite):Void
 	{
+		this.target =  target;
 		enemyMove.setTarget(target);
 		biter.setTarget(target);
 	}
@@ -61,6 +78,7 @@ class Enemy extends IkEntity
 
 	public function setData(data:EnemyData, isHuman:Bool):Void
 	{
+		enemyData = data;
 		type = data.type;
 		enemyMove.speed = data.speed;
 		health = data.health;
@@ -93,8 +111,10 @@ class Enemy extends IkEntity
 
 	public function setHuman():Void
 	{
-		trace("set human");
 		biter.setEnabled(false);
 		body.cbTypes.add(GC.CB_EDIBLE);
+		shooter = cast this.addComponent(new Shooter());
+		shooter.setGun(enemyData.gun, 8, 8);
+		shooter.autoShoot = true;
 	}
 }

@@ -28,12 +28,24 @@ class Shooter extends IkComponent
 		gun.setData(GC.GUNS.get(type));
 		gun.setParent(owner);
 		gun.setReleativePos(offX, offY);
+		gun.exists = gun.active = enabled;
 	}
 
 	override public function update():Void
 	{
 		if(autoShoot)
 			shoot();
+	}
+
+	override public function setEnabled(enabled:Bool):Bool
+	{
+		if(this.enabled == enabled)
+			return enabled;
+
+		if(gun != null)
+			gun.active = gun.exists = enabled;
+
+		return super.setEnabled(enabled);
 	}
 
 	public function setTarget(x:Float, y:Float):Void
