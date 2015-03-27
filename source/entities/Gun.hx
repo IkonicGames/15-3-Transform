@@ -17,6 +17,7 @@ class Gun extends FlxSprite
 
 	var parent:FlxSprite;
 	var position:FlxVector;
+	var rightAngleDiff:Float;
 
 	// gundata
 	var fireRate:Float;
@@ -25,10 +26,10 @@ class Gun extends FlxSprite
 	var shotCount:Int;
 	var spread:Float;
 
+	var bulletManager:BulletManager;
+	var canShoot:Bool;
 	var timer:FlxTimer;
 	var clipRemaining:Int;
-	var rightAngleDiff:Float;
-	var bulletManager:BulletManager;
 	var target:FlxPoint;
 
 	public function new()
@@ -40,9 +41,8 @@ class Gun extends FlxSprite
 
 		target = FlxPoint.get();
 		position = FlxVector.get();
-		timer = new FlxTimer();
-		timer.complete = onTimerCompleted;
-
+		timer = new FlxTimer(0.1, onTimerCompleted, 0);
+		canShoot = false;
 		bulletManager = Locator.bulletManager;
 	}
 
@@ -55,7 +55,7 @@ class Gun extends FlxSprite
 
 	function onTimerCompleted(timer:FlxTimer):Void
 	{
-		shoot();
+		canShoot = true;
 	}
 
 	public function setData(gunData:GunData):Void
@@ -86,8 +86,13 @@ class Gun extends FlxSprite
 		target.set(tX, tY);
 	}
 
-	function shoot():Void
+	public function shoot():Void
 	{
+		if(!canShoot)
+			return;
+
+		canShoot = false;
+
 		bulletManager.shoot(parent, x, y, target.x, target.y);
 		clipRemaining--;
 
