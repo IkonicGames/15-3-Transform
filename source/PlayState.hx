@@ -79,6 +79,15 @@ class PlayState extends FlxNapeState
 
 	function onPlayerDied():Void
 	{
-		this.openSubState(new GameOverState());
+		if(player.isHuman)
+		{
+			player.setZombie();
+			player.reset(player.x, player.y);
+			enemyManager.setHuman();
+		}
+		else
+		{
+			this.openSubState(new GameOverState());
+		}
 	}
 }
