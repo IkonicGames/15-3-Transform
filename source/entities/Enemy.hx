@@ -57,7 +57,7 @@ class Enemy extends IkEntity
 		biter.bite(target);
 	}
 
-	public function setData(data:EnemyData):Void
+	public function setData(data:EnemyData, isHuman:Bool):Void
 	{
 		type = data.type;
 		enemyMove.speed = data.speed;
@@ -81,5 +81,14 @@ class Enemy extends IkEntity
 			scale.set(4, 4);
 			color = FlxColor.RED;
 		}
+
+		if(isHuman)
+			setHuman();
+	}
+
+	public function setHuman():Void
+	{
+		biter.enabled = false;
+		body.cbTypes.add(GC.CB_EDIBLE);
 	}
 }

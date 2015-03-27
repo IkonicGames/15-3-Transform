@@ -25,8 +25,11 @@ class EnemyManager extends FlxTypedGroup<Enemy>
 	var target:FlxSprite;
 	var enemyTypes:StringMap<EnemyData>;
 	var activeEnemies:StringMap<Int>;
+	var biteListener:InteractionListener;
 
 	var timer:FlxTimer;
+
+	var isHuman:Bool;
 
 	function new()
 	{
@@ -41,7 +44,7 @@ class EnemyManager extends FlxTypedGroup<Enemy>
 		timer = new FlxTimer(waves[0].duration, onTimerCompleted);
 
 		//physics
-		var biteListener = new InteractionListener(CbEvent.ONGOING, InteractionType.COLLISION,
+		biteListener = new InteractionListener(CbEvent.ONGOING, InteractionType.COLLISION,
 			GC.CB_BITER, GC.CB_EDIBLE, onEnemyTouchPlayer);
 		FlxNapeState.space.listeners.add(biteListener);
 	}
@@ -81,6 +84,12 @@ class EnemyManager extends FlxTypedGroup<Enemy>
 		this.target = target;
 	}
 
+	public function setHuman():Void
+	{
+		isHuman = true;
+		FlxNapeState.space.listeners.remove(biteListener);
+	}
+
 	function verifyEnemyCount():Void
 	{
 		for(key in enemyTypes.keys())
@@ -100,7 +109,7 @@ class EnemyManager extends FlxTypedGroup<Enemy>
 		this.add(enemy);
 		enemy.onDeath.add(onEnemyDied);
 		enemy.setTarget(target);
-		enemy.setData(enemyTypes.get(type));
+		enemy.setData(enemyTypes.get(type), isHuman);
 		activeEnemies.set(type, activeEnemies.get(type) + 1);
 
 		var pos = getSpawnPosition();

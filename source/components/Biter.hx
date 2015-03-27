@@ -26,15 +26,15 @@ class Biter extends IkComponent
 
 	override public function setEnabled(enabled:Bool):Bool
 	{
-		if(this.enabled == enabled)
-			return;
+		if(this.enabled == enabled || owner.body == null)
+			return enabled;
 
 		if(enabled)
 			owner.body.cbTypes.add(GC.CB_BITER);
 		else
-			onwer.body.cbTypes.remove(GC.CB_BITER);
+			owner.body.cbTypes.remove(GC.CB_BITER);
 
-		return super(enabled);
+		return super.setEnabled(enabled);
 	}
 
 	function onBiteRefresh(timer:FlxTimer):Void
