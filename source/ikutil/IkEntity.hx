@@ -34,14 +34,16 @@ class IkEntity extends FlxSprite
 		super.update();
 
 		for(c in components)
-			c.update();
+			if(c.enabled)
+				c.update();
 	}
 
 	override public function draw():Void
 	{
 		super.draw();
 		for(c in components)
-			c.draw();
+			if(c.enabled)
+				c.draw();
 	}
 	
 	public function addComponent(component:IkComponent):IkComponent
