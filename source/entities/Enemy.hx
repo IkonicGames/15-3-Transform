@@ -88,7 +88,7 @@ class Enemy extends IkEntity
 
 	public function setHuman():Void
 	{
-		biter.enabled = false;
+		biter.setEnabled(false);
 		body.cbTypes.add(GC.CB_EDIBLE);
 	}
 }
