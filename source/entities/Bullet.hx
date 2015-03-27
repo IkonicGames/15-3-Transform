@@ -23,6 +23,7 @@ class Bullet extends FlxNapeSprite
 		this.body.userData.owner = owner;
 		this.body.userData.data = this;
 		this.body.isBullet = true;
+		this.body.setShapeFilters(GC.FILTER_BULLET);
 
 		FlxNapeVelocity.moveTowardsPoint(this, FlxPoint.get(toX, toY), GC.BULLET_SPEED);
 		this.body.velocity.length = GC.BULLET_SPEED;

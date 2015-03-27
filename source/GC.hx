@@ -35,10 +35,12 @@ class GC
 	public static inline var GROUP_PLAYER:Int = 1 << 0;
 	public static inline var GROUP_ENEMY:Int = 1 << 1;
 	public static inline var GROUP_BOUNDS:Int = 1 << 2;
+	public static inline var GROUP_BULLET:Int = 1 << 4;
 
 	public static var FILTER_PLAYER(default, null):InteractionFilter = new InteractionFilter(GROUP_PLAYER);
 	public static var FILTER_ENEMY(default, null):InteractionFilter = new InteractionFilter(GROUP_ENEMY, ~GROUP_BOUNDS);
 	public static var FILTER_BOUNDS(default, null):InteractionFilter = new InteractionFilter(GROUP_BOUNDS, ~GROUP_ENEMY);
+	public static var FILTER_BULLET(default, null):InteractionFilter = new InteractionFilter(GROUP_BULLET, ~GROUP_BULLET);
 
 	static var _init:Bool;
 	public static function init():Void
