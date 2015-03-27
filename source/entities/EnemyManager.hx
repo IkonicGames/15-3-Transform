@@ -90,7 +90,7 @@ class EnemyManager extends FlxTypedGroup<Enemy>
 		isHuman = true;
 		FlxNapeState.space.listeners.remove(biteListener);
 
-		FlxG.state.forEachOfType(Enemy, function(enemy) {
+		forEachOfType(Enemy, function(enemy) {
 			enemy.setHuman();
 		});
 	}

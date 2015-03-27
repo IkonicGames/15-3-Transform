@@ -37,7 +37,9 @@ class Enemy extends IkEntity
 		enemyManager = Locator.enemyManager;
 
 		enemyMove = cast this.addComponent(new EnemyMove());
+		enemyMove.setEnabled(false);
 		biter = cast this.addComponent(new Biter());
+		biter.setEnabled(false);
 	}
 
 	override public function kill():Void
@@ -80,6 +82,9 @@ class Enemy extends IkEntity
 			animation.play("run", true, FlxRandom.intRanged(0, 9));
 			scale.set(4, 4);
 			color = FlxColor.RED;
+
+			enemyMove.setEnabled(true);
+			biter.setEnabled(true);
 		}
 
 		if(isHuman)
@@ -88,6 +93,7 @@ class Enemy extends IkEntity
 
 	public function setHuman():Void
 	{
+		trace("set human");
 		biter.setEnabled(false);
 		body.cbTypes.add(GC.CB_EDIBLE);
 	}
