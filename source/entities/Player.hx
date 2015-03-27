@@ -16,6 +16,7 @@ import nape.callbacks.InteractionType;
 class Player extends IkEntity
 {
 	public var onDied(default, null):FlxSignal;
+	public var isHuman(default, null):Bool;
 
 	var playerMove:PlayerMove;
 	var biter:Biter;
@@ -44,6 +45,8 @@ class Player extends IkEntity
 
 		playerMove = cast this.addComponent(new PlayerMove());
 		this.addComponent(new components.PlayerAnimate());
+
+		isHuman = true;
 
 		shooter = cast this.addComponent(new Shooter());
 		shooter.setGun("pistol", 8, 8);
@@ -80,6 +83,8 @@ class Player extends IkEntity
 
 	public function setZombie():Void
 	{
+		isHuman = false;
+		health = GC.PLR_HEALTH;
 		shooter.setEnabled(false);
 		biter.setEnabled(true);
 		FlxNapeState.space.listeners.add(biteListener);
