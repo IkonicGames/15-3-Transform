@@ -51,9 +51,10 @@ class Biter extends IkComponent
 	{
 		if(!enabled)
 			return;
+
 		// if there is no target, bite everything.
 		// if there is a target, only bite the target.
-		if((target == null || target == this.target) && canBite)
+		if((this.target == null || target == this.target) && canBite)
 		{
 			target.hurt(biteDamage);
 			timer.reset(1 / bitesPerSec);
