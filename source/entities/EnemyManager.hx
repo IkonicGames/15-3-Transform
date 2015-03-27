@@ -4,6 +4,7 @@ package entities;
 import data.WaveData;
 import data.EnemyData;
 import entities.Enemy;
+import flixel.FlxG;
 import flixel.addons.nape.FlxNapeState;
 import flixel.FlxSprite;
 import flixel.group.FlxTypedGroup;
@@ -88,6 +89,10 @@ class EnemyManager extends FlxTypedGroup<Enemy>
 	{
 		isHuman = true;
 		FlxNapeState.space.listeners.remove(biteListener);
+
+		FlxG.state.forEachOfType(Enemy, function(enemy) {
+			enemy.setHuman();
+		});
 	}
 
 	function verifyEnemyCount():Void
