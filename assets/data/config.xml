@@ -1,7 +1,7 @@
 <data>
 	<dims x="700" y="500" />
 	<bullet speed="400" weight="8" />
-	<player health="10" speed="200"/>
+	<player health="10" speed="200" biteDamage="1" bitePerSec="1" />
 	<enemies>
 		<enemy type="simple" health="1" speed="30" radius="8" gun="pistol" bitePerSec="1" biteDamage="2" />
 		<enemy type="basic" health="10" speed="40" radius="12" gun="pistol" bitePerSec="3" biteDamage="1"/>

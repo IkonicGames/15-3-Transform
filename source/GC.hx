@@ -16,6 +16,8 @@ class GC
 
 	public static var PLR_HEALTH(default, null):Float;
 	public static var PLR_SPEED(default, null):Float;
+	public static var PLR_BITE_DAMAGE(default, null):Float;
+	public static var PLR_BITE_PER_SEC(default, null):Float;
 
 	public static var BULLET_SPEED(default, null):Float;
 	public static var BULLET_WEIGHT(default, null):Float;
@@ -82,6 +84,8 @@ class GC
 				case "player":
 					PLR_HEALTH = Std.parseFloat(element.att.health);
 					PLR_SPEED = Std.parseFloat(element.att.speed);
+					PLR_BITE_DAMAGE = Std.parseFloat(element.att.biteDamage);
+					PLR_BITE_PER_SEC = Std.parseFloat(element.att.bitePerSec);
 					
 				case "dims":
 					LEVEL_DIMS = new FlxPoint(Std.parseFloat(element.att.x), Std.parseFloat(element.att.y));
