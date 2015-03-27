@@ -24,6 +24,19 @@ class Biter extends IkComponent
 		canBite = true;
 	}
 
+	override public function setEnabled(enabled:Bool):Bool
+	{
+		if(this.enabled == enabled)
+			return;
+
+		if(enabled)
+			owner.body.cbTypes.add(GC.CB_BITER);
+		else
+			onwer.body.cbTypes.remove(GC.CB_BITER);
+
+		return super(enabled);
+	}
+
 	function onBiteRefresh(timer:FlxTimer):Void
 	{
 		canBite = true;
@@ -36,7 +49,11 @@ class Biter extends IkComponent
 
 	public function bite(target:FlxSprite):Void
 	{
-		if(target == this.target && canBite)
+		if(!enabled)
+			return;
+		// if there is no target, bite everything.
+		// if there is a target, only bite the target.
+		if((target == null || target == this.target) && canBite)
 		{
 			target.hurt(biteDamage);
 			timer.reset(1 / bitesPerSec);
