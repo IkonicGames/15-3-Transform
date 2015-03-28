@@ -19,12 +19,13 @@ class GC
 	public static var LEVEL_DIMS(default, null):FlxPoint;
 
 	public static var PLR_HEALTH(default, null):Float;
-	public static var PLR_SPEED(default, null):Float;
+	public static var PLR_ZOMBIE_SPEED(default, null):Float;
+	public static var PLR_HUMAN_SPEED(default, null):Float;
 	public static var PLR_BITE_DAMAGE(default, null):Float;
 	public static var PLR_BITE_PER_SEC(default, null):Float;
 
 	public static var BULLET_SPEED(default, null):Float;
-	public static var BULLET_WEIGHT(default, null):Float;
+	public static var BULLET_RADIUS(default, null):Float;
 
 	public static var WAVES(default, null):Array<WaveData>;
 	public static var ENEMIES(default, null):StringMap<EnemyData>;
@@ -91,7 +92,8 @@ class GC
 
 				case "player":
 					PLR_HEALTH = Std.parseFloat(element.att.health);
-					PLR_SPEED = Std.parseFloat(element.att.speed);
+					PLR_ZOMBIE_SPEED = Std.parseFloat(element.att.zombieSpeed);
+					PLR_HUMAN_SPEED = Std.parseFloat(element.att.humanSpeed);
 					PLR_BITE_DAMAGE = Std.parseFloat(element.att.biteDamage);
 					PLR_BITE_PER_SEC = Std.parseFloat(element.att.bitePerSec);
 					
@@ -100,7 +102,7 @@ class GC
 
 				case "bullet":
 					BULLET_SPEED = Std.parseFloat(element.att.speed);
-					BULLET_WEIGHT = Std.parseFloat(element.att.weight);
+					BULLET_RADIUS= Std.parseFloat(element.att.radius);
 
 				case "sprites":
 					for(sprite in element.elements)

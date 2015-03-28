@@ -6,6 +6,8 @@ import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.group.FlxTypedGroup;
 import flixel.util.FlxPoint;
+import flixel.util.FlxAngle;
+import flixel.util.FlxPoint;
 import flixel.addons.nape.FlxNapeState;
 import nape.callbacks.CbEvent;
 import nape.callbacks.InteractionCallback;
@@ -25,7 +27,7 @@ class BulletManager extends FlxTypedGroup<Enemy>
 		FlxNapeState.space.listeners.add(boundsListener);
 	}
 	
-	public function shoot(owner:FlxSprite, fromX:Float, fromY:Float, toX:Float, toY:Float)
+	public function shoot(owner:FlxSprite, fromX:Float, fromY:Float, toX:Float, toY:Float):Void
 	{
 		var bullet = new Bullet(owner, fromX, fromY, toX, toY);
 		FlxG.state.add(bullet);

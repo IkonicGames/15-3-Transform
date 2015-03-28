@@ -1,27 +1,29 @@
 <data>
 	<dims x="700" y="500" />
-	<bullet speed="400" weight="8" />
-	<player health="10" speed="200" biteDamage="1" bitePerSec="1" />
+	<bullet speed="300" radius="2" />
+	<player health="10" humanSpeed="100" zombieSpeed="130" biteDamage="5" bitePerSec="1" />
 	<enemies>
-		<enemy type="simple" health="1" speed="30" radius="8" gun="pistol" bitePerSec="1" biteDamage="2" sprite="humanoid1" />
-		<enemy type="basic" health="10" speed="40" radius="12" gun="pistol" bitePerSec="3" biteDamage="1" sprite="humanoid1" />
+		<enemy type="simple" health="1" speed="30" radius="8" gun="pistol" bitePerSec="1" biteDamage="5" sprite="basic" />
+		<enemy type="mgMan" health="2" speed="40" radius="8" gun="machineGun" bitePerSec="2" biteDamage="5" sprite="basic" />
+		<enemy type="shottyMan" health="3" speed="20" radius="8" gun="shotgun" bitePerSec="2" biteDamage="5" sprite="basic" />
 	</enemies>
 	<guns>
-		<gun type="pistol" fireRate="1.5" shotCount="1" reloadTime="2" clipSize="8" spread="5" />
-		<gun type="machineGun" fireRate="8" shotCount="1" reloadTime="2" clipSize="30" spread="5" />
+		<gun type="pistol" fireRate="1.5" shotCount="1" reloadTime="2" clipSize="6" spread="5" />
+		<gun type="machineGun" fireRate="4" shotCount="1" reloadTime="0.1" clipSize="12" spread="5" />
+		<gun type="shotgun" fireRate="1" shotCount="8" reloadTime="4" clipSize="3" spread="20" />
 	</guns>
 	<sprites>
-		<sprite name="humanoid1" frameWidth="8" frameHeight="8">
-			<anim name="stand" frames="0" frameRate="24" loop="true" />
-			<anim name="run" frames="0,1,2,3,4,5,6,7,8,9" frameRate="24" loop="true" />
+		<sprite name="basic" frameWidth="32" frameHeight="32">
+			<anim name="stand" frames="0" frameRate="18" loop="true" />
+			<anim name="run" frames="0,1,2,3,4,5,6,7,8,9,10" frameRate="24" loop="true" />
 		</sprite>
 	</sprites>
 	<waves>
-		<wave duration="10">
-			<enemy type="simple" count="1" />
+		<wave duration="30">
+			<enemy type="shottyMan" count="1" />
 		</wave>
 		<wave duration="10">
-			<enemy type="simple" count="10" />
+			<enemy type="shottyMan" count="10" />
 		</wave>
 		<wave duration="30">
 			<enemy type="simple" count="15" />

@@ -44,12 +44,13 @@ class Player extends IkEntity
 		onDied = new FlxSignal();
 
 		playerMove = cast this.addComponent(new PlayerMove());
+		playerMove.speed = GC.PLR_HUMAN_SPEED;
 		this.addComponent(new components.PlayerAnimate());
 
 		isHuman = true;
 
 		shooter = cast this.addComponent(new Shooter());
-		shooter.setGun("pistol", 8, 8);
+		shooter.setGun("machineGun", 10, 10);
 
 		biter = cast this.addComponent(new Biter());
 		biter.biteDamage = GC.PLR_BITE_DAMAGE;
@@ -85,6 +86,7 @@ class Player extends IkEntity
 	{
 		isHuman = false;
 		health = GC.PLR_HEALTH;
+		playerMove.speed = GC.PLR_ZOMBIE_SPEED;
 		shooter.setEnabled(false);
 		biter.setEnabled(true);
 		FlxNapeState.space.listeners.add(biteListener);

@@ -9,6 +9,8 @@ import flixel.util.FlxAngle;
 import flixel.util.FlxPoint;
 import flixel.util.FlxTimer;
 import flixel.util.FlxVector;
+import flixel.util.FlxRandom;
+import flixel.util.FlxVelocity;
 import nape.phys.Body;
 
 class Gun extends FlxSprite
@@ -31,6 +33,7 @@ class Gun extends FlxSprite
 	var timer:FlxTimer;
 	var clipRemaining:Int;
 	var target:FlxPoint;
+	var shootTarget:FlxVector;
 
 	public function new()
 	{
@@ -40,6 +43,7 @@ class Gun extends FlxSprite
 		this.color = flixel.util.FlxColor.BLUE;
 
 		target = FlxPoint.get();
+		shootTarget = FlxVector.get();
 		position = FlxVector.get();
 		timer = new FlxTimer(0.1, onTimerCompleted, 0);
 		canShoot = false;
@@ -93,7 +97,15 @@ class Gun extends FlxSprite
 
 		canShoot = false;
 
-		bulletManager.shoot(parent, x, y, target.x, target.y);
+		for(i in 0...shotCount)
+		{
+			// var angle = FlxAngle.angleBetweenPoint(this, target, true);
+			// var t = FlxAngle.getCartesianCoords(1, angle);
+			shootTarget.set(target.x - x, target.y - y);
+			shootTarget.rotateByDegrees(FlxRandom.floatRanged(-spread / 2, spread / 2));
+			shootTarget.add(x, y);
+			bulletManager.shoot(parent, x, y, shootTarget.x, shootTarget.y);
+		}
 		clipRemaining--;
 
 		if(clipRemaining > 0)

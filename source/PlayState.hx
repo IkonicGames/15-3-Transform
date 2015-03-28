@@ -57,7 +57,7 @@ class PlayState extends FlxNapeState
 		this.velocityIterations = 5;
 		this.positionIterations = 5;
 
-		// this.napeDebugEnabled = true;
+		this.napeDebugEnabled = true;
 	}
 
 	override public function destroy():Void

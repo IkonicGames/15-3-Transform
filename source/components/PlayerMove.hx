@@ -7,6 +7,7 @@ import flixel.util.FlxAngle;
 
 class PlayerMove extends IkComponent
 {
+	public var speed:Float;
 	public var isMoving(default, null):Bool;
 
 	var direction:FlxVector;
@@ -36,7 +37,7 @@ class PlayerMove extends IkComponent
 		if(isMoving)
 			direction.normalize();
 
-		owner.body.velocity.setxy(direction.x * GC.PLR_SPEED, direction.y * GC.PLR_SPEED);
+		owner.body.velocity.setxy(direction.x * speed, direction.y * speed);
 	}
 
 	function updateRotation():Void

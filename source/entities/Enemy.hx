@@ -98,8 +98,8 @@ class Enemy extends IkEntity
 
 			var sprite = GC.ANIMATION_CONTROLLERS.get(data.sprite);
 			loadGraphic(sprite.image, true, sprite.frameWidth, sprite.frameHeight);
-			sprite.addAnimToController(this.animation);
-			scale.set(4, 4);
+			sprite.addAnimToController(animation);
+			animation.play("run");
 			color = FlxColor.RED;
 
 			enemyMove.setEnabled(true);

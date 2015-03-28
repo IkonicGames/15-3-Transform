@@ -19,11 +19,9 @@ class PlayerAnimate extends IkComponent
 	{
 		super.init(owner);
 
-		var sprite = GC.ANIMATION_CONTROLLERS.get("humanoid1");
+		var sprite = GC.ANIMATION_CONTROLLERS.get("basic");
 		owner.loadGraphic(sprite.image, true, sprite.frameWidth, sprite.frameHeight);
 		sprite.addAnimToController(owner.animation);
-
-		owner.scale.set(4, 4);
 		owner.color = 0xFF0000FF;
 
 		playerMove = cast owner.getComponent(PlayerMove);
