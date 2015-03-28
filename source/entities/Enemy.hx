@@ -4,6 +4,7 @@ import components.Biter;
 import components.EnemyMove;
 import components.Shooter;
 import data.EnemyData;
+import data.SpriteData;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.util.FlxColor;
@@ -95,9 +96,9 @@ class Enemy extends IkEntity
 			body.cbTypes.add(GC.CB_SHOOTABLE);
 			body.setShapeFilters(GC.FILTER_ENEMY);
 
-			loadGraphic(AssetPaths.humanoid1__png, true, 8, 8);
-			animation.add("run", [0,1,2,3,4,5,6,7,8,9], 12, true);
-			animation.play("run", true, FlxRandom.intRanged(0, 9));
+			var sprite = GC.ANIMATION_CONTROLLERS.get(data.sprite);
+			loadGraphic(sprite.image, true, sprite.frameWidth, sprite.frameHeight);
+			sprite.addAnimToController(this.animation);
 			scale.set(4, 4);
 			color = FlxColor.RED;
 

@@ -13,6 +13,7 @@ class EnemyData
 		ed.radius = Std.parseInt(xml.get("radius"));
 		ed.bitePerSec = Std.parseFloat(xml.get("bitePerSec"));
 		ed.biteDamage = Std.parseInt(xml.get("biteDamage"));
+		ed.sprite = xml.get("sprite");
 
 		return ed;
 	}
@@ -26,4 +27,5 @@ class EnemyData
 	public var radius(default, null):Int;
 	public var bitePerSec(default, null):Float;
 	public var biteDamage(default, null):Int;
+	public var sprite(default, null):String;
 }

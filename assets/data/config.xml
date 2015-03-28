@@ -3,8 +3,8 @@
 	<bullet speed="400" weight="8" />
 	<player health="10" speed="200" biteDamage="1" bitePerSec="1" />
 	<enemies>
-		<enemy type="simple" health="1" speed="30" radius="8" gun="pistol" bitePerSec="1" biteDamage="2" />
-		<enemy type="basic" health="10" speed="40" radius="12" gun="pistol" bitePerSec="3" biteDamage="1"/>
+		<enemy type="simple" health="1" speed="30" radius="8" gun="pistol" bitePerSec="1" biteDamage="2" sprite="humanoid1" />
+		<enemy type="basic" health="10" speed="40" radius="12" gun="pistol" bitePerSec="3" biteDamage="1" sprite="humanoid1" />
 	</enemies>
 	<guns>
 		<gun type="pistol" fireRate="1.5" shotCount="1" reloadTime="2" clipSize="8" spread="5" />
