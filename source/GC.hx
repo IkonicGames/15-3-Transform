@@ -1,11 +1,15 @@
 package ;
 
+import data.SpriteData;
 import flixel.util.FlxPoint;
+import flixel.util.FlxStringUtil;
+import flixel.animation.FlxAnimationController;
 import nape.callbacks.CbType;
 import nape.dynamics.InteractionFilter;
 import data.EnemyData;
 import data.WaveData;
 import data.GunData;
+import data.SpriteData;
 import haxe.xml.Fast;
 import haxe.ds.StringMap;
 import openfl.Assets;
@@ -41,6 +45,8 @@ class GC
 	public static var FILTER_ENEMY(default, null):InteractionFilter = new InteractionFilter(GROUP_ENEMY, ~GROUP_BOUNDS);
 	public static var FILTER_BOUNDS(default, null):InteractionFilter = new InteractionFilter(GROUP_BOUNDS, ~GROUP_ENEMY);
 	public static var FILTER_BULLET(default, null):InteractionFilter = new InteractionFilter(GROUP_BULLET, ~GROUP_BULLET);
+
+	public static var ANIMATION_CONTROLLERS(default, null):StringMap<SpriteData> = new StringMap<SpriteData>();
 
 	static var _init:Bool;
 	public static function init():Void
@@ -95,6 +101,10 @@ class GC
 				case "bullet":
 					BULLET_SPEED = Std.parseFloat(element.att.speed);
 					BULLET_WEIGHT = Std.parseFloat(element.att.weight);
+
+				case "sprites":
+					for(sprite in element.elements)
+						ANIMATION_CONTROLLERS.set(sprite.att.name, SpriteData.fromXML(sprite.x));
 			}
 		}
 	}

@@ -10,6 +10,12 @@
 		<gun type="pistol" fireRate="1.5" shotCount="1" reloadTime="2" clipSize="8" spread="5" />
 		<gun type="machineGun" fireRate="8" shotCount="1" reloadTime="2" clipSize="30" spread="5" />
 	</guns>
+	<sprites>
+		<sprite name="humanoid1" frameWidth="8" frameHeight="8">
+			<anim name="stand" frames="0" frameRate="24" loop="true" />
+			<anim name="run" frames="0,1,2,3,4,5,6,7,8,9" frameRate="24" loop="true" />
+		</sprite>
+	</sprites>
 	<waves>
 		<wave duration="10">
 			<enemy type="simple" count="1" />
