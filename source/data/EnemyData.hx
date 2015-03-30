@@ -1,4 +1,3 @@
-
 package data;
 
 class EnemyData 
@@ -7,6 +6,7 @@ class EnemyData
 	{
 		var ed = new EnemyData();
 		ed.type = xml.get("type");
+		ed.color= Std.parseInt(xml.get("color"));
 		ed.speed = Std.parseFloat(xml.get("speed"));
 		ed.gun = xml.get("gun");
 		ed.health = Std.parseInt(xml.get("health"));
@@ -21,6 +21,7 @@ class EnemyData
 	private function new() {}
 
 	public var type(default, null):String;
+	public var color(default, null):Int;
 	public var speed(default, null):Float;
 	public var gun(default, null):String;
 	public var health(default, null):Int;
