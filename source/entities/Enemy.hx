@@ -57,12 +57,21 @@ class Enemy extends IkEntity
 
 	override public function kill():Void
 	{
+		if(!alive)
+			return;
+			
 		super.kill();
 
 		if(shooter != null)
 			shooter.setEnabled(false);
 
 		onDeath.dispatch(this);
+	}
+
+	override public function destroy():Void
+	{
+		shooter.destroy();
+		super.destroy();
 	}
 
 	public function setTarget(target:FlxSprite):Void
@@ -100,7 +109,7 @@ class Enemy extends IkEntity
 			loadGraphic(sprite.image, true, sprite.frameWidth, sprite.frameHeight);
 			sprite.addAnimToController(animation);
 			animation.play("run");
-			color = FlxColor.RED;
+			color = data.color;
 
 			enemyMove.setEnabled(true);
 			biter.setEnabled(true);
@@ -112,6 +121,9 @@ class Enemy extends IkEntity
 
 	public function setHuman():Void
 	{
+		if(!alive)
+			return;
+
 		biter.setEnabled(false);
 		body.cbTypes.add(GC.CB_EDIBLE);
 		shooter = cast this.addComponent(new Shooter());
