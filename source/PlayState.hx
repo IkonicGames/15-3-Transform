@@ -71,6 +71,7 @@ class PlayState extends FlxNapeState
 
 		Locator.releaseBulletManager(bulletManager);
 		Locator.releaseEnemyManager(enemyManager);
+		Locator.releaseWeaponDropManager(weaponDropManager);
 		Locator.releaseGameHUD(gameHUD);
 	}
 
