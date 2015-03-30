@@ -2,16 +2,18 @@
 	<dims x="700" y="500" />
 	<bullet speed="400" radius="2" />
 	<player health="10" humanSpeed="100" zombieSpeed="130" biteDamage="5" bitePerSec="1" />
-	<weaponDrop spawnChance="5" liveTime="10" fadeTime="2" />
+	<weaponDrop spawnChance="10" liveTime="10" fadeTime="2" />
 	<enemies>
-		<enemy type="simple" health="1" speed="50" radius="8" gun="pistol" bitePerSec="1" biteDamage="5" sprite="basic" />
-		<enemy type="mgMan" health="1" speed="40" radius="8" gun="machineGun" bitePerSec="2" biteDamage="5" sprite="basic" />
-		<enemy type="shottyMan" health="1" speed="20" radius="8" gun="shotgun" bitePerSec="2" biteDamage="5" sprite="basic" />
+		<enemy type="simple" health="1" speed="40" radius="8" gun="pistol" bitePerSec="1" biteDamage="5" sprite="basic" color="0xffff0000" />
+		<enemy type="mgMan" health="1" speed="30" radius="8" gun="machineGun" bitePerSec="2" biteDamage="5" sprite="basic" color="0xff99583d" />
+		<enemy type="shottyMan" health="2" speed="20" radius="8" gun="shotgun" bitePerSec="2" biteDamage="5" sprite="basic" color="0xffcc4a14" />
+		<!-- <enemy type="nailBiter" health="2" speed="20" radius="8" gun="nailCannon" bitePerSec="2" biteDamage="5" sprite="basic" color="0xffFF6000" /> -->
 	</enemies>
 	<guns>
 		<gun type="pistol" fireRate="1.5" shotCount="1" reloadTime="2" clipSize="6" spread="2" />
-		<gun type="machineGun" fireRate="4" shotCount="1" reloadTime="2" clipSize="12" spread="5" />
-		<gun type="shotgun" fireRate="1" shotCount="8" reloadTime="4" clipSize="3" spread="20" />
+		<gun type="machineGun" fireRate="5" shotCount="1" reloadTime="2" clipSize="15" spread="5" />
+		<gun type="shotgun" fireRate="1" shotCount="9" reloadTime="2" clipSize="8" spread="15" />
+		<!-- <gun type="nailCannon" fireRate="2" shotCount="5" reloadTime="3" clipSize="8" spread="15" /> -->
 	</guns>
 	<sprites>
 		<sprite name="basic" frameWidth="32" frameHeight="32">
@@ -20,20 +22,22 @@
 		</sprite>
 	</sprites>
 	<waves>
-		<wave duration="30">
-			<enemy type="simple" count="5" />
-		</wave>
 		<wave duration="10">
-			<enemy type="simple" count="10" />
+			<enemy type="simple" count="8" />
+		</wave>
+		<wave duration="30">
+			<enemy type="simple" count="12" />
 		</wave>
 		<wave duration="30">
 			<enemy type="simple" count="15" />
 		</wave>
-		<wave duration="20">
-			<enemy type="simple" count="25" />
+		<wave duration="30">
+			<enemy type="simple" count="15" />
+			<enemy type="mgMan" count="2" />
 		</wave>
 		<wave duration="10">
-			<enemy type="simple" count="30" />
+			<enemy type="simple" count="13" />
+			<enemy type="mgMan" count="5" />
 		</wave>
 		<wave duration="30">
 			<enemy type="simple" count="40" />

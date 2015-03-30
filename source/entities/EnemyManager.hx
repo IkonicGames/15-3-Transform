@@ -64,6 +64,7 @@ class EnemyManager extends FlxTypedGroup<Enemy>
 	function onTimerCompleted(timer:FlxTimer):Void
 	{
 		currentWave++;
+		trace("Current Wave: " + Std.string(currentWave));
 		this.timer.reset(waves[currentWave].duration);
 	}
 

@@ -40,7 +40,7 @@ class Gun extends FlxSprite
 		super();
 
 		this.makeGraphic(4, 4);
-		this.color = flixel.util.FlxColor.BLUE;
+		this.color = flixel.util.FlxColor.RED;
 
 		target = FlxPoint.get();
 		shootTarget = FlxVector.get();
