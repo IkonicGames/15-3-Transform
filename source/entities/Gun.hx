@@ -71,7 +71,7 @@ class Gun extends FlxSprite
 		reloadTime = gunData.reloadTime;
 		spread = gunData.spread;
 
-		reload();
+		clipRemaining = clipSize;
 	}
 
 	public function setReleativePos(X:Float = 0, Y:Float = 0):Void

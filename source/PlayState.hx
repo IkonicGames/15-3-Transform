@@ -3,6 +3,7 @@ package;
 import entities.BulletManager;
 import entities.EnemyManager;
 import entities.Player;
+import entities.WeaponDropManager;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
@@ -24,6 +25,7 @@ class PlayState extends FlxNapeState
 	var player:Player;
 	var enemyManager:EnemyManager;
 	var bulletManager:BulletManager;
+	var weaponDropManager:WeaponDropManager;
 	var gameHUD:GameHUD;
 
 	override public function create():Void
@@ -37,6 +39,7 @@ class PlayState extends FlxNapeState
 
 		bulletManager = Locator.registerBulletManager(new BulletManager());
 		enemyManager = Locator.registerEnemyManager(new EnemyManager());
+		weaponDropManager = Locator.registerWeaponDropManager(new WeaponDropManager());
 		gameHUD = Locator.registerGameHUD(new GameHUD());
 
 		player = cast add(new Player());
@@ -45,9 +48,11 @@ class PlayState extends FlxNapeState
 
 		enemyManager.setTarget(player);
 		gameHUD.setPlayer(player);
+		weaponDropManager.setPlayer(player);
 
 		add(enemyManager);
 		add(bulletManager);
+		add(weaponDropManager);
 		add(gameHUD);
 
 		FlxG.camera.focusOn(FlxPoint.get(GC.LEVEL_DIMS.x / 2, GC.LEVEL_DIMS.y / 2));
@@ -57,7 +62,7 @@ class PlayState extends FlxNapeState
 		this.velocityIterations = 5;
 		this.positionIterations = 5;
 
-		this.napeDebugEnabled = true;
+		// this.napeDebugEnabled = true;
 	}
 
 	override public function destroy():Void

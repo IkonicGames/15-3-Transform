@@ -3,12 +3,14 @@ package ;
 
 import entities.BulletManager;
 import entities.EnemyManager;
+import entities.WeaponDropManager;
 import ui.GameHUD;
 
 class Locator 
 {
 	public static var bulletManager(default, null):BulletManager;
 	public static var enemyManager(default, null):EnemyManager;
+	public static var weaponDropManager(default, null):WeaponDropManager;
 	public static var gameHUD(default, null):GameHUD;
 
 	public static function registerBulletManager(bm:BulletManager):BulletManager
@@ -53,6 +55,23 @@ class Locator
 			gameHUD = null;
 
 		return ghud;
+	}
+
+	public static function registerWeaponDropManager(wd:WeaponDropManager):WeaponDropManager
+	{
+	    if(weaponDropManager != null)
+	    	throwError(WeaponDropManager);
+	    			
+    	weaponDropManager = wd;
+    	return weaponDropManager;
+	}
+
+	public static function releaseWeaponDropManager(wd:WeaponDropManager):WeaponDropManager
+	{
+	    if(weaponDropManager == wd)
+	    	weaponDropManager = null;
+
+	    return wd;
 	}
 
 	private static inline function throwError(c:Class<Dynamic>):Void

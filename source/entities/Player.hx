@@ -50,7 +50,7 @@ class Player extends IkEntity
 		isHuman = true;
 
 		shooter = cast this.addComponent(new Shooter());
-		shooter.setGun("machineGun", 10, 10);
+		shooter.setGun("pistol", 10, 10);
 
 		biter = cast this.addComponent(new Biter());
 		biter.biteDamage = GC.PLR_BITE_DAMAGE;
@@ -90,5 +90,10 @@ class Player extends IkEntity
 		shooter.setEnabled(false);
 		biter.setEnabled(true);
 		FlxNapeState.space.listeners.add(biteListener);
+	}
+
+	public function giveGun(gun:String):Void
+	{
+		shooter.setGun(gun, 10, 10);
 	}
 }

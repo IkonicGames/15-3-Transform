@@ -27,9 +27,15 @@ class GC
 	public static var BULLET_SPEED(default, null):Float;
 	public static var BULLET_RADIUS(default, null):Float;
 
+	public static var DROP_LIVE_TIME(default, null):Float;
+	public static var DROP_FADE_TIME(default, null):Float;
+	public static var DROP_SPAWN_CHANCE(default, null):Int;
+
 	public static var WAVES(default, null):Array<WaveData>;
 	public static var ENEMIES(default, null):StringMap<EnemyData>;
 	public static var GUNS(default, null):StringMap<GunData>;
+
+	public static var GUN_TYPES(default, null):Array<String>;
 
 	public static var CB_EDIBLE(default, null):CbType = new CbType();
 	public static var CB_BITER(default, null):CbType = new CbType();
@@ -61,6 +67,7 @@ class GC
 		WAVES = new Array<WaveData>();
 		ENEMIES = new StringMap<EnemyData>();
 		GUNS = new StringMap<GunData>();
+		GUN_TYPES = new Array<String>();
 
 		var xml = Xml.parse(Assets.getText(AssetPaths.config__xml));
 		var fast = new Fast(xml.firstElement());
@@ -88,6 +95,7 @@ class GC
 					{
 						var gun = GunData.fromXML(gunFast.x);
 						GUNS.set(gun.type, gun);
+						GUN_TYPES.push(gun.type);
 					}
 
 				case "player":
@@ -107,6 +115,11 @@ class GC
 				case "sprites":
 					for(sprite in element.elements)
 						ANIMATION_CONTROLLERS.set(sprite.att.name, SpriteData.fromXML(sprite.x));
+
+				case "weaponDrop":
+					DROP_LIVE_TIME = Std.parseFloat(element.att.liveTime);
+					DROP_FADE_TIME = Std.parseFloat(element.att.fadeTime);
+					DROP_SPAWN_CHANCE = Std.parseInt(element.att.spawnChance);
 			}
 		}
 	}

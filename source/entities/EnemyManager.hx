@@ -11,6 +11,7 @@ import flixel.group.FlxTypedGroup;
 import flixel.util.FlxRandom;
 import flixel.util.FlxTimer;
 import flixel.util.FlxPoint;
+import flixel.util.FlxSignal;
 import haxe.ds.StringMap;
 import nape.callbacks.CbEvent;
 import nape.callbacks.InteractionCallback;
@@ -20,6 +21,8 @@ import openfl.Assets;
 
 class EnemyManager extends FlxTypedGroup<Enemy>
 {
+	public var enemyDiedSignal(default, null):FlxTypedSignal<Enemy -> Void>;
+
 	var waves:Array<WaveData>;
 	var currentWave:Int;
 
@@ -43,6 +46,7 @@ class EnemyManager extends FlxTypedGroup<Enemy>
 			activeEnemies.set(enemyType, 0);
 		
 		timer = new FlxTimer(waves[0].duration, onTimerCompleted);
+		enemyDiedSignal = new FlxTypedSignal<Enemy -> Void>();
 
 		//physics
 		biteListener = new InteractionListener(CbEvent.ONGOING, InteractionType.COLLISION,
@@ -68,6 +72,7 @@ class EnemyManager extends FlxTypedGroup<Enemy>
 		var count = activeEnemies.get(enemy.type);
 		count--;
 		activeEnemies.set(enemy.type, count);
+		enemyDiedSignal.dispatch(enemy);
 	}
 
 	function onEnemyTouchPlayer(cb:InteractionCallback):Void
