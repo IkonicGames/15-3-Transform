@@ -18,6 +18,7 @@ class Bullet extends FlxNapeSprite
 		this.color = FlxColor.BLUE;
 
 		this.createCircularBody(GC.BULLET_RADIUS, nape.phys.BodyType.DYNAMIC);
+		this.body.mass = GC.BULLET_MASS;
 		this.physicsEnabled = true;
 		this.body.cbTypes.add(GC.CB_BULLET);
 		this.body.userData.owner = owner;

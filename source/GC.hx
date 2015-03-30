@@ -26,6 +26,7 @@ class GC
 
 	public static var BULLET_SPEED(default, null):Float;
 	public static var BULLET_RADIUS(default, null):Float;
+	public static var BULLET_MASS(default, null):Float;
 
 	public static var DROP_LIVE_TIME(default, null):Float;
 	public static var DROP_FADE_TIME(default, null):Float;
@@ -111,6 +112,7 @@ class GC
 				case "bullet":
 					BULLET_SPEED = Std.parseFloat(element.att.speed);
 					BULLET_RADIUS= Std.parseFloat(element.att.radius);
+					BULLET_MASS = Std.parseFloat(element.att.mass);
 
 				case "sprites":
 					for(sprite in element.elements)
