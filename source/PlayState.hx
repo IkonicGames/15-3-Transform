@@ -90,6 +90,7 @@ class PlayState extends FlxNapeState
 			player.setZombie();
 			player.reset(player.x, player.y);
 			enemyManager.setHuman();
+			this.remove(weaponDropManager);
 		}
 		else
 		{
