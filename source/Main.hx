@@ -65,7 +65,7 @@ class Main extends Sprite
 		}
 
 		addChild(new FlxGame(gameWidth, gameHeight, initialState, zoom, framerate, framerate, skipSplash, startFullscreen));
-		FlxG.camera.bgColor = 0xFFD4FFDE;
+		FlxG.camera.bgColor = 0xFF61B236;
 		// FlxG.debugger.visible = true;
 	}
 }
