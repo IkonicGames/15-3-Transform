@@ -74,6 +74,12 @@ class Enemy extends IkEntity
 		super.destroy();
 	}
 
+	override public function setPosition(X:Float = 0, Y:Float = 0):Void
+	{
+		super.setPosition(X, Y);
+		body.position.setxy(X, Y);
+	}
+
 	public function setTarget(target:FlxSprite):Void
 	{
 		this.target =  target;
