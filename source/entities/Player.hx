@@ -96,4 +96,9 @@ class Player extends IkEntity
 	{
 		shooter.setGun(gun, 10, 10);
 	}
+
+	public function getGun():Gun
+	{
+	    return shooter.getGun();
+	}
 }

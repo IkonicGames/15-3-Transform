@@ -64,7 +64,6 @@ class EnemyManager extends FlxTypedGroup<Enemy>
 	function onTimerCompleted(timer:FlxTimer):Void
 	{
 		currentWave++;
-		trace("Current Wave: " + Std.string(currentWave));
 		this.timer.reset(waves[currentWave].duration);
 	}
 
@@ -124,7 +123,7 @@ class EnemyManager extends FlxTypedGroup<Enemy>
 		activeEnemies.set(type, activeEnemies.get(type) + 1);
 
 		var pos = getSpawnPosition();
-		enemy.body.position.setxy(pos.x, pos.y);
+		enemy.setPosition(pos.x, pos.y);
 	}
 
 	function getSpawnPosition():FlxPoint

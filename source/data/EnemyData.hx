@@ -6,6 +6,7 @@ class EnemyData
 	{
 		var ed = new EnemyData();
 		ed.type = xml.get("type");
+		ed.scoreValue = Std.parseInt(xml.get("score"));
 		ed.color= Std.parseInt(xml.get("color"));
 		ed.speed = Std.parseFloat(xml.get("speed"));
 		ed.gun = xml.get("gun");
@@ -21,6 +22,7 @@ class EnemyData
 	private function new() {}
 
 	public var type(default, null):String;
+	public var scoreValue(default, null):Int;
 	public var color(default, null):Int;
 	public var speed(default, null):Float;
 	public var gun(default, null):String;

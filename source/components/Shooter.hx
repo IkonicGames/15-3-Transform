@@ -58,4 +58,9 @@ class Shooter extends IkComponent
 		if(enabled)
 			gun.shoot();
 	}
+
+	public function getGun():Gun
+	{
+	   return gun;
+	}
 }

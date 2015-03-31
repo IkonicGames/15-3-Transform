@@ -17,6 +17,7 @@ class Enemy extends IkEntity
 {
 	public var type(default, null):String;
 	public var onDeath(default, null):FlxTypedSignal<Enemy -> Void>;
+	public var scoreValue(default, null):Int;
 
 	var target:FlxSprite;
 	var speed:Float;
@@ -52,7 +53,7 @@ class Enemy extends IkEntity
 		super.update();
 
 		if(shooter != null && target != null)
-			shooter.setTarget(target.x, target.y);
+			shooter.setTarget(target.x + target.origin.x, target.y + target.origin.y);
 	}
 
 	override public function kill():Void
@@ -96,6 +97,7 @@ class Enemy extends IkEntity
 	{
 		enemyData = data;
 		type = data.type;
+		scoreValue = data.scoreValue;
 		enemyMove.speed = data.speed;
 		health = data.health;
 		biter.biteDamage = data.biteDamage;

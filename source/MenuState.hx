@@ -5,6 +5,8 @@ import flixel.FlxSprite;
 import flixel.FlxState;
 import flixel.text.FlxText;
 import flixel.ui.FlxButton;
+import flixel.tweens.FlxTween;
+import flixel.tweens.FlxEase;
 
 /**
  * A FlxState which can be used for the game's menu.
@@ -21,6 +23,12 @@ class MenuState extends FlxState
 		super.create();
 
 		playButton = cast add(new FlxButton(FlxG.width / 2, FlxG.height / 2, "Play", onPlayClicked));
+		playButton.x -= playButton.width / 2;
+
+		var title = new FlxText(0, FlxG.height * 0.3, FlxG.width, "Zombie Bonus Round", 32);
+		title.alignment = "center";
+		this.add(title);
+		var tween = FlxTween.tween(title.scale, {x:1.1, y:1.1}, 0.5, {type:FlxTween.PINGPONG, ease:FlxEase.sineInOut});
 	}
 
 	/**

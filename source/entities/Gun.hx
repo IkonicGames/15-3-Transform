@@ -16,6 +16,7 @@ import nape.phys.Body;
 class Gun extends FlxSprite
 {
 	public var type(default, null):String;
+	public var reloadPct(get, never):Float;
 
 	var parent:FlxSprite;
 	var position:FlxVector;
@@ -34,6 +35,7 @@ class Gun extends FlxSprite
 	var clipRemaining:Int;
 	var target:FlxPoint;
 	var shootTarget:FlxVector;
+	var isReloading:Bool;
 
 	public function new()
 	{
@@ -48,6 +50,7 @@ class Gun extends FlxSprite
 		timer = new FlxTimer(0.1, onTimerCompleted, 0);
 		canShoot = false;
 		bulletManager = Locator.bulletManager;
+		isReloading = false;
 	}
 
 	override public function update():Void
@@ -95,6 +98,7 @@ class Gun extends FlxSprite
 		if(!canShoot)
 			return;
 
+		isReloading = false;
 		canShoot = false;
 
 		for(i in 0...shotCount)
@@ -116,6 +120,7 @@ class Gun extends FlxSprite
 
 	function reload():Void
 	{
+		isReloading = true;
 		clipRemaining = clipSize;
 		timer.reset(reloadTime);
 	}
@@ -126,5 +131,13 @@ class Gun extends FlxSprite
 		this.angle = parent.angle;
 		x = parent.x + parent.origin.x + position.x - origin.x;
 		y = parent.y + parent.origin.y + position.y - origin.y;
+	}
+
+	function get_reloadPct():Float
+	{
+		if(isReloading)
+			return timer.progress;
+
+		return 1;
 	}
 }

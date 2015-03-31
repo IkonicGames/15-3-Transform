@@ -12,6 +12,7 @@ class Locator
 	public static var enemyManager(default, null):EnemyManager;
 	public static var weaponDropManager(default, null):WeaponDropManager;
 	public static var gameHUD(default, null):GameHUD;
+	public static var scoreManager(default, null):ScoreManager;
 
 	public static function registerBulletManager(bm:BulletManager):BulletManager
 	{
@@ -72,6 +73,23 @@ class Locator
 	    	weaponDropManager = null;
 
 	    return wd;
+	}
+
+	public static function registerScoreManager(sm:ScoreManager):ScoreManager
+	{
+	    if(scoreManager != null)
+	    	throwError(ScoreManager);
+
+	    scoreManager = sm;
+	    return scoreManager;
+	}
+
+	public static function releaseScoreManager(sm:ScoreManager):ScoreManager
+	{
+	    if(scoreManager == sm)
+	    	scoreManager = null;
+
+	    return sm;
 	}
 
 	private static inline function throwError(c:Class<Dynamic>):Void

@@ -26,6 +26,7 @@ class PlayState extends FlxNapeState
 	var enemyManager:EnemyManager;
 	var bulletManager:BulletManager;
 	var weaponDropManager:WeaponDropManager;
+	var scoreManager:ScoreManager;
 	var gameHUD:GameHUD;
 
 	override public function create():Void
@@ -40,6 +41,7 @@ class PlayState extends FlxNapeState
 		bulletManager = Locator.registerBulletManager(new BulletManager());
 		enemyManager = Locator.registerEnemyManager(new EnemyManager());
 		weaponDropManager = Locator.registerWeaponDropManager(new WeaponDropManager());
+		scoreManager = Locator.registerScoreManager(new ScoreManager());
 		gameHUD = Locator.registerGameHUD(new GameHUD());
 
 		player = cast add(new Player());
@@ -67,12 +69,15 @@ class PlayState extends FlxNapeState
 
 	override public function destroy():Void
 	{
-		super.destroy();
-
 		Locator.releaseBulletManager(bulletManager);
 		Locator.releaseEnemyManager(enemyManager);
 		Locator.releaseWeaponDropManager(weaponDropManager);
 		Locator.releaseGameHUD(gameHUD);
+		Locator.releaseScoreManager(scoreManager);
+
+		this.closeSubState();
+
+		super.destroy();
 	}
 
 	override public function update():Void
