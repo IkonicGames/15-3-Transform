@@ -73,5 +73,90 @@
 			<enemy type="shottyMan" count="10" />
 			<enemy type="mgMan" count="5" />
 		</wave>
+		<wave number="14" duration="30">
+			<enemy type="simple" count="25" />
+			<enemy type="shottyMan" count="12" />
+			<enemy type="mgMan" count="8" />
+		</wave>
+		<wave number="15" duration="30">
+			<enemy type="simple" count="25" />
+			<enemy type="shottyMan" count="15" />
+			<enemy type="mgMan" count="10" />
+		</wave>
+		<wave number="16" duration="30">
+			<enemy type="simple" count="25" />
+			<enemy type="shottyMan" count="15" />
+			<enemy type="mgMan" count="15" />
+		</wave>
+		<wave number="17" duration="30">
+			<enemy type="simple" count="25" />
+			<enemy type="shottyMan" count="17" />
+			<enemy type="mgMan" count="17" />
+		</wave>
+		<wave number="18" duration="30">
+			<enemy type="simple" count="25" />
+			<enemy type="shottyMan" count="20" />
+			<enemy type="mgMan" count="18" />
+		</wave>
+		<wave number="19" duration="30">
+			<enemy type="simple" count="25" />
+			<enemy type="shottyMan" count="25" />
+			<enemy type="mgMan" count="15" />
+		</wave>
+		<wave number="20" duration="30">
+			<enemy type="simple" count="30" />
+			<enemy type="shottyMan" count="20" />
+			<enemy type="mgMan" count="15" />
+		</wave>
+		<wave number="21" duration="30">
+			<enemy type="simple" count="40" />
+			<enemy type="shottyMan" count="15" />
+			<enemy type="mgMan" count="12" />
+		</wave>
+		<wave number="22" duration="30">
+			<enemy type="simple" count="40" />
+			<enemy type="shottyMan" count="15" />
+			<enemy type="mgMan" count="17" />
+		</wave>
+		<wave number="23" duration="30">
+			<enemy type="simple" count="40" />
+			<enemy type="shottyMan" count="15" />
+			<enemy type="mgMan" count="25" />
+		</wave>
+		<wave number="24" duration="30">
+			<enemy type="simple" count="40" />
+			<enemy type="shottyMan" count="20" />
+			<enemy type="mgMan" count="25" />
+		</wave>
+		<wave number="25" duration="30">
+			<enemy type="simple" count="40" />
+			<enemy type="shottyMan" count="25" />
+			<enemy type="mgMan" count="25" />
+		</wave>
+		<wave number="26" duration="30">
+			<enemy type="simple" count="40" />
+			<enemy type="shottyMan" count="30" />
+			<enemy type="mgMan" count="25" />
+		</wave>
+		<wave number="27" duration="30">
+			<enemy type="simple" count="40" />
+			<enemy type="shottyMan" count="30" />
+			<enemy type="mgMan" count="30" />
+		</wave>
+		<wave number="28" duration="30">
+			<enemy type="simple" count="40" />
+			<enemy type="shottyMan" count="35" />
+			<enemy type="mgMan" count="30" />
+		</wave>
+		<wave number="29" duration="30">
+			<enemy type="simple" count="40" />
+			<enemy type="shottyMan" count="35" />
+			<enemy type="mgMan" count="35" />
+		</wave>
+		<wave number="30" duration="999">
+			<enemy type="simple" count="40" />
+			<enemy type="shottyMan" count="40" />
+			<enemy type="mgMan" count="40" />
+		</wave>
 	</waves>
 </data>
