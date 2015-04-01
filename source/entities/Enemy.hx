@@ -71,7 +71,9 @@ class Enemy extends IkEntity
 
 	override public function destroy():Void
 	{
-		shooter.destroy();
+		if(shooter != null)
+			shooter.destroy();
+		
 		super.destroy();
 	}
 

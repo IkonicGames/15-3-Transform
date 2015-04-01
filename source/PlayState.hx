@@ -69,15 +69,13 @@ class PlayState extends FlxNapeState
 
 	override public function destroy():Void
 	{
+		super.destroy();
+
 		Locator.releaseBulletManager(bulletManager);
 		Locator.releaseEnemyManager(enemyManager);
 		Locator.releaseWeaponDropManager(weaponDropManager);
 		Locator.releaseGameHUD(gameHUD);
 		Locator.releaseScoreManager(scoreManager);
-
-		this.closeSubState();
-
-		super.destroy();
 	}
 
 	override public function update():Void
@@ -99,7 +97,14 @@ class PlayState extends FlxNapeState
 		}
 		else
 		{
-			this.openSubState(new GameOverState());
+			var go = new GameOverState();
+			this.openSubState(go);
+			go.closeCallback = onGameOverClosed;
 		}
+	}
+
+	function onGameOverClosed():Void
+	{
+		FlxG.switchState(new PlayState());
 	}
 }

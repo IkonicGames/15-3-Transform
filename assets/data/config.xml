@@ -10,9 +10,9 @@
 		<!-- <enemy type="nailBiter" health="2" speed="20" radius="8" gun="nailCannon" bitePerSec="2" biteDamage="5" sprite="basic" color="0xffFF6000" /> -->
 	</enemies>
 	<guns>
-		<gun type="pistol" fireRate="1.5" shotCount="1" reloadTime="2" clipSize="6" spread="2" />
-		<gun type="machineGun" fireRate="5" shotCount="1" reloadTime="2" clipSize="15" spread="5" />
-		<gun type="shotgun" fireRate="1" shotCount="9" reloadTime="2" clipSize="8" spread="15" />
+		<gun type="pistol" fireRate="1.5" shotCount="1" reloadTime="2" clipSize="6" spread="2" sound="pistol" />
+		<gun type="machineGun" fireRate="5" shotCount="1" reloadTime="2" clipSize="15" spread="5" sound="pistol" />
+		<gun type="shotgun" fireRate="1" shotCount="9" reloadTime="2" clipSize="8" spread="15" sound="shotgun" />
 		<!-- <gun type="nailCannon" fireRate="2" shotCount="5" reloadTime="3" clipSize="8" spread="15" /> -->
 	</guns>
 	<sprites>

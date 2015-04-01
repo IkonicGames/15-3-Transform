@@ -29,7 +29,7 @@
 	
 	<set name="BUILD_DIR" value="export" />
 	<classpath name="source" />
-	<assets path="assets" />
+	<assets path="assets" exclude="assets/excluded/*" />
 	
 	<!--------------------------------LIBRARIES------------------------------------->
 
@@ -39,7 +39,7 @@
 	<haxelib name="flixel-addons" />
 	
 	<!--In case you want to use the ui package-->
-	<!--haxelib name="flixel-ui"/-->
+	<haxelib name="flixel-ui"/>
 	
 	<!--In case you want to use nape with flixel-->
 	<haxelib name="nape" />
@@ -81,4 +81,7 @@
 	<!--Place custom nodes like icons here (higher priority to override the HaxeFlixel icon)-->
 
 	<haxedef name="IK_USE_NAPE" />
+	
+	<!-- Required to open the link to the song -->
+	<haxeflag name="-D" value="network-sandbox" />
 </project>

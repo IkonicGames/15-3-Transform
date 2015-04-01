@@ -12,6 +12,7 @@ class GunData
 		gun.clipSize = Std.parseInt(xml.get("clipSize"));
 		gun.reloadTime = Std.parseFloat(xml.get("reloadTime"));
 		gun.spread = Std.parseFloat(xml.get("spread"));
+		gun.sound = "assets/sounds/" + xml.get("sound") + ".mp3";
 
 		return gun;
 	}
@@ -24,4 +25,5 @@ class GunData
 	public var clipSize(default, null):Int;
 	public var reloadTime(default, null):Float;
 	public var spread(default, null):Float;
+	public var sound(default, null):String;
 }

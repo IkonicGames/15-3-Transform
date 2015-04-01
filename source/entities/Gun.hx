@@ -5,6 +5,7 @@ import entities.BulletManager;
 import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxSprite;
+import flixel.system.FlxSound;
 import flixel.util.FlxAngle;
 import flixel.util.FlxPoint;
 import flixel.util.FlxTimer;
@@ -36,6 +37,8 @@ class Gun extends FlxSprite
 	var target:FlxPoint;
 	var shootTarget:FlxVector;
 	var isReloading:Bool;
+
+	var shootSnd:FlxSound;
 
 	public function new()
 	{
@@ -75,6 +78,8 @@ class Gun extends FlxSprite
 		spread = gunData.spread;
 
 		clipRemaining = clipSize;
+
+		shootSnd = FlxG.sound.load(gunData.sound);
 	}
 
 	public function setReleativePos(X:Float = 0, Y:Float = 0):Void
@@ -101,10 +106,10 @@ class Gun extends FlxSprite
 		isReloading = false;
 		canShoot = false;
 
+		shootSnd.play(true);
+
 		for(i in 0...shotCount)
 		{
-			// var angle = FlxAngle.angleBetweenPoint(this, target, true);
-			// var t = FlxAngle.getCartesianCoords(1, angle);
 			shootTarget.set(target.x - x, target.y - y);
 			shootTarget.rotateByDegrees(FlxRandom.floatRanged(-spread / 2, spread / 2));
 			shootTarget.add(x, y);

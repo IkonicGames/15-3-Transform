@@ -66,5 +66,6 @@ class Main extends Sprite
 
 		addChild(new FlxGame(gameWidth, gameHeight, initialState, zoom, framerate, framerate, skipSplash, startFullscreen));
 		FlxG.camera.bgColor = 0xFF61B236;
+		FlxG.sound.playMusic(AssetPaths.Gollias_LestatV_resampled__mp3);
 	}
 }

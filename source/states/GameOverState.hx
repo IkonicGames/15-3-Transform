@@ -34,7 +34,6 @@ class GameOverState extends FlxSubState
 	
 	function onPlayAgain():Void
 	{
-		FlxG.resetState();
-		// FlxG.switchState(new PlayState());
+		FlxG.state.closeSubState();
 	}
 }
